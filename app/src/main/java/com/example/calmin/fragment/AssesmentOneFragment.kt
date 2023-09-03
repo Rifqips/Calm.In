@@ -25,7 +25,17 @@ class AssesmentOneFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.tvNext.setOnClickListener {
-            findNavController().navigate(R.id.action_assesmentOneFragment_to_assesmentTwoFragment)
+            postDescription()
         }
     }
+
+    private fun postDescription(){
+        val arg = Bundle()
+        arg.putString("story", binding.etStory.text.toString())
+        arg.putString("story-tell", binding.etStoryTell.text.toString())
+
+        findNavController().navigate(R.id.action_assesmentOneFragment_to_assesmentTwoFragment, arg)
+    }
+
+
 }
