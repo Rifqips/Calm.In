@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_color"
+    tools:context=".fragment.AssesmentOneFragment">
+
+    <TextView
+        android:id="@+id/tv_title_story"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="150dp"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/poppins"
+        android:text="Bagaiamana keaadan kamu hari ini ?"
+        android:textColor="@color/grey_font"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/lyt_story"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="30dp"
+        android:background="@drawable/et_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_story">
+
+        <EditText
+            android:id="@+id/et_story"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary_color"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Tuliskan disini.."
+            android:inputType="text"
+            android:maxLength="25"
+            android:padding="10dp"
+            android:textColor="@color/grey_font"
+            android:textColorHint="@color/grey"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_title_tell"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/poppins"
+        android:text="Ceritakan Disini"
+        android:textColor="@color/grey_font"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lyt_story"/>
+
+
+    <RelativeLayout
+        android:id="@+id/lyt_tell"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="30dp"
+        android:background="@drawable/et_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_tell">
+
+        <EditText
+            android:id="@+id/et_story_tell"
+            android:layout_width="match_parent"
+            android:layout_height="162dp"
+            android:backgroundTint="@color/primary_color"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Tuliskan disini.."
+            android:gravity="top"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColor="@color/grey_font"
+            android:textColorHint="@color/grey"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/poppins"
+        android:text="Lanjutkan"
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/secondary_color"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

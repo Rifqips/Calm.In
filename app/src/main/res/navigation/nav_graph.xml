@@ -1,6 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/assesmentOneFragment">
 
+    <fragment
+        android:id="@+id/assesmentOneFragment"
+        android:name="com.example.calmin.fragment.AssesmentOneFragment"
+        android:label="fragment_assesment_one"
+        tools:layout="@layout/fragment_assesment_one" >
+        <action
+            android:id="@+id/action_assesmentOneFragment_to_assesmentTwoFragment"
+            app:destination="@id/assesmentTwoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/assesmentTwoFragment"
+        android:name="com.example.calmin.fragment.AssesmentTwoFragment"
+        android:label="fragment_assesment_two"
+        tools:layout="@layout/fragment_assesment_two" >
+        <action
+            android:id="@+id/action_assesmentTwoFragment_to_assesmentOneFragment"
+            app:destination="@id/assesmentOneFragment" />
+        <action
+            android:id="@+id/action_assesmentTwoFragment_to_assesmentThreeFragment"
+            app:destination="@id/assesmentThreeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/assesmentThreeFragment"
+        android:name="com.example.calmin.fragment.AssesmentThreeFragment"
+        android:label="fragment_assesment_three"
+        tools:layout="@layout/fragment_assesment_three" >
+        <action
+            android:id="@+id/action_assesmentThreeFragment_to_assesmentTwoFragment"
+            app:destination="@id/assesmentTwoFragment" />
+        <action
+            android:id="@+id/action_assesmentThreeFragment_to_assesmentFourFragment"
+            app:destination="@id/assesmentFourFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/assesmentFourFragment"
+        android:name="com.example.calmin.fragment.AssesmentFourFragment"
+        android:label="fragment_assesment_four"
+        tools:layout="@layout/fragment_assesment_four" >
+        <action
+            android:id="@+id/action_assesmentFourFragment_to_assesmentThreeFragment"
+            app:destination="@id/assesmentThreeFragment" />
+        <action
+            android:id="@+id/action_assesmentFourFragment_to_assesmentFiveFragment"
+            app:destination="@id/assesmentFiveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/assesmentFiveFragment"
+        android:name="com.example.calmin.fragment.AssesmentFiveFragment"
+        android:label="fragment_assesment_five"
+        tools:layout="@layout/fragment_assesment_five" >
+        <action
+            android:id="@+id/action_assesmentFiveFragment_to_assesmentFourFragment"
+            app:destination="@id/assesmentFourFragment" />
+        <action
+            android:id="@+id/action_assesmentFiveFragment_to_assesmentSixFragment"
+            app:destination="@id/assesmentSixFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/assesmentSixFragment"
+        android:name="com.example.calmin.fragment.AssesmentSixFragment"
+        android:label="fragment_assesment_six"
+        tools:layout="@layout/fragment_assesment_six" >
+        <action
+            android:id="@+id/action_assesmentSixFragment_to_assesmentFiveFragment"
+            app:destination="@id/assesmentFiveFragment" />
+        <action
+            android:id="@+id/action_assesmentSixFragment_to_assesmentSevenFragment"
+            app:destination="@id/assesmentSevenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/assesmentSevenFragment"
+        android:name="com.example.calmin.fragment.AssesmentSevenFragment"
+        android:label="fragment_assesment_seven"
+        tools:layout="@layout/fragment_assesment_seven" >
+        <action
+            android:id="@+id/action_assesmentSevenFragment_to_assesmentSixFragment"
+            app:destination="@id/assesmentSixFragment" />
+        <action
+            android:id="@+id/action_assesmentSevenFragment_to_assesmentOneFragment"
+            app:destination="@id/assesmentOneFragment" />
+    </fragment>
 </navigation>

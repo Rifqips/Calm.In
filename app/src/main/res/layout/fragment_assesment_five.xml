@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primary_color"
+    tools:context=".fragment.AssesmentFiveFragment">
+
+    <TextView
+        android:id="@+id/tv_title_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="150dp"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Pertanyaan 4"
+        android:textColor="@color/secondary_color"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title_description"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/poppins"
+        android:textStyle="bold"
+        android:text="Pertanyaan Keempat Untuk Tes Di Sini ?"
+        android:textColor="@color/secondary_color"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_number"/>
+
+    <RadioGroup
+        android:id="@+id/question_1"
+        style="@style/radio_qroup"
+        android:orientation="vertical"
+        android:layout_marginVertical="20dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_description">
+
+        <RadioButton
+            android:id="@+id/q1"
+            style="@style/radio_button"
+            android:text="Pertanyaan 1"  />
+
+        <RadioButton
+            android:id="@+id/q2"
+            style="@style/radio_button"
+            android:text="Pertanyaan 2" />
+
+        <RadioButton
+            android:id="@+id/q3"
+            style="@style/radio_button"
+            android:text="Pertanyaan 3" />
+
+        <RadioButton
+            android:id="@+id/q4"
+            style="@style/radio_button"
+            android:text="Pertanyaan 4" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_desc_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Pertanyaan 4 dari 6"
+        android:textColor="@color/grey"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question_1" />
+
+    <TextView
+        android:id="@+id/tv_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/poppins"
+        android:text="Lanjutkan"
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/secondary_color"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -97,6 +97,7 @@
         android:layout_marginVertical="35dp"
         android:background="@drawable/et_border"
         android:text="Masuk"
+        android:textAllCaps="false"
         android:textSize="16sp"
         android:backgroundTint="@color/secondary_color"
         android:fontFamily="@font/poppins"

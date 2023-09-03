@@ -1,11 +1,10 @@
 package com.example.calmin.activity
 
-import android.app.NotificationManager
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.view.WindowManager
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.calmin.R
 import com.example.calmin.databinding.ActivityDashboardBinding
@@ -25,6 +24,11 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.bottomNav.background = null
         loadFragment(fragmentHome)
+
+        binding.ivAssasment.setOnClickListener {
+            startActivity(Intent(this, AssasmentActivity::class.java))
+        }
+
         binding.bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menuHome ->{
@@ -46,4 +50,17 @@ class DashboardActivity : AppCompatActivity() {
             .replace(R.id.container_dashboard, fragment)
             .commit()
     }
+    override fun onBackPressed() {
+        AlertDialog.Builder(this)
+            .setTitle("Tutup Aplikasi")
+            .setMessage("Ingin Keluar Dari Aplikasi ??")
+            .setPositiveButton("Iya"){ _: DialogInterface, i: Int ->
+                finishAffinity()
+            }
+            .setNegativeButton("Tidak"){ dialogInterface: DialogInterface, i: Int ->
+                dialogInterface.dismiss()
+            }
+            .show()
+    }
+
 }

@@ -16,4 +16,21 @@
     <!-- Customize your light theme here. -->
     <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
+
+    <style name="radio_qroup" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginStart">20dp</item>
+    </style>
+
+    <style name="radio_button" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">280dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:buttonTint">@color/secondary_color</item>
+    </style>
+
 </resources>
