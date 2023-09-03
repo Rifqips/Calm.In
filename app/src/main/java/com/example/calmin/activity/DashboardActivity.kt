@@ -22,20 +22,19 @@ class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
-        this.window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
-        window.decorView.systemUiVisibility = (
-                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or
-                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                )
         setContentView(binding.root)
         binding.bottomNav.background = null
         loadFragment(fragmentHome)
         binding.bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.menuHome ->
+                R.id.menuHome ->{
                     loadFragment(fragmentHome)
-                R.id.menuProfile ->
+                    true
+                }
+                R.id.menuProfile ->{
                     loadFragment(fragmentProfile)
+                    false
+                }
             }
             true
         }
