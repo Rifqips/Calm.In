@@ -135,6 +135,7 @@
         android:layout_marginVertical="35dp"
         android:background="@drawable/et_border"
         android:text="Daftar"
+        android:clickable="false"
         android:textSize="16sp"
         android:textAllCaps="false"
         android:backgroundTint="@color/secondary_color"

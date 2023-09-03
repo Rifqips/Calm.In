@@ -1,16 +1,18 @@
 package com.example.calmin.fragment
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.calmin.R
+import androidx.fragment.app.Fragment
 import com.example.calmin.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,5 +24,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        sharedPreferences = requireActivity()
+            .getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+
+        binding.tvUsername.text = sharedPreferences.getString("username","")
     }
 }

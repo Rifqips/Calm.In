@@ -1,7 +1,9 @@
 package com.example.calmin.fragment
 
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +18,7 @@ import com.example.calmin.databinding.FragmentProfileBinding
 class ProfileFragment : Fragment() {
 
     private lateinit var binding : FragmentProfileBinding
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,12 +32,21 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        sharedPreferences = requireActivity()
+            .getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+
+        binding.tvUsername.text = sharedPreferences.getString("username","")
+
         binding.btnLogout.setOnClickListener {
             AlertDialog.Builder(requireActivity())
                 .setTitle("Tutup Aplikasi")
                 .setMessage("Ingin Keluar Dari Aplikasi ??")
                 .setPositiveButton("Iya"){ _: DialogInterface, i: Int ->
-                    finishAffinity(requireActivity())
+                    startActivity(Intent(context, LoginActivity::class.java))
+//                    sharedPreferences = requireActivity()
+//                        .getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+//                    val addUser = sharedPreferences.edit()
+//                    addUser.clear()
                 }
                 .setNegativeButton("Tidak"){ dialogInterface: DialogInterface, i: Int ->
                     dialogInterface.dismiss()

@@ -1,14 +1,20 @@
 package com.example.calmin.activity
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputType
+import android.widget.Toast
 import com.example.calmin.R
 import com.example.calmin.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityRegisterBinding
+    private lateinit var sharedPreferences: SharedPreferences
     private var isPasswordVisible = false
     private var isPasswordVisibleConfirm = false
 
@@ -29,6 +35,10 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener {
             onBackPressed()
+        }
+
+        binding.btnRegister.setOnClickListener{
+            saveData()
         }
     }
 
@@ -62,5 +72,22 @@ class RegisterActivity : AppCompatActivity() {
 
         // Move the cursor to the end of the password field to maintain cursor position
         binding.etConfirmPassword.setSelection(binding.etConfirmPassword.text.length)
+    }
+
+    private fun saveData(){
+        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val username = binding.etUsername.text.toString()
+        val password = binding.etPassword.text.toString()
+        if (username != "" && password != ""){
+            val addUser = sharedPreferences.edit()
+            addUser.putString("username", username)
+            addUser.putString("password", password)
+            addUser.apply()
+            Toast.makeText(this, "Berhasil Registrasi", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, DashboardActivity::class.java))
+            finish()
+        } else{
+            Toast.makeText(this, "Gagal Registrasi", Toast.LENGTH_SHORT).show()
+        }
     }
 }

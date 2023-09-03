@@ -1,16 +1,23 @@
 package com.example.calmin.activity
 
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputType
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.navigation.fragment.findNavController
 import com.example.calmin.R
 import com.example.calmin.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityLoginBinding
+    private lateinit var sharedPreferences: SharedPreferences
     private var isPasswordVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,8 +31,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnAction.setOnClickListener {
-            startActivity(Intent(this, DashboardActivity::class.java))
-            finish()
+            dataUser()
         }
 
         binding.btnRegister.setOnClickListener {
@@ -44,8 +50,34 @@ class LoginActivity : AppCompatActivity() {
                 InputType.TYPE_TEXT_VARIATION_PASSWORD or InputType.TYPE_CLASS_TEXT
             binding.showPassBtn.setImageResource(R.drawable.baseline_remove_red_eye_24) // Replace with your show password icon
         }
-
-        // Move the cursor to the end of the password field to maintain cursor position
         binding.etPassword.setSelection(binding.etPassword.text.length)
+    }
+
+    private fun dataUser(){
+        sharedPreferences = this@LoginActivity
+            .getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val savedUsername = sharedPreferences.getString("username", "r4Nd0mV4lu3")
+        val savedPassword = sharedPreferences.getString("password", "r4Nd0mV4lu3")
+
+        if (binding.etUsername.text.toString() == savedUsername && binding.etPassword.text.toString() == savedPassword) {
+            Toast.makeText(this, "Berhasil Login", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, DashboardActivity::class.java))
+            finish()
+        } else {
+            Toast.makeText(this, "Gagal Login", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onBackPressed() {
+        AlertDialog.Builder(this)
+            .setTitle("Tutup Aplikasi")
+            .setMessage("Ingin Keluar Dari Aplikasi ?")
+            .setPositiveButton("Iya"){ _: DialogInterface, i: Int ->
+                finishAffinity()
+            }
+            .setNegativeButton("Tidak"){ dialogInterface: DialogInterface, i: Int ->
+                dialogInterface.dismiss()
+            }
+            .show()
     }
 }

@@ -53,7 +53,7 @@ class DashboardActivity : AppCompatActivity() {
     override fun onBackPressed() {
         AlertDialog.Builder(this)
             .setTitle("Tutup Aplikasi")
-            .setMessage("Ingin Keluar Dari Aplikasi ??")
+            .setMessage("Ingin Keluar Dari Aplikasi ?")
             .setPositiveButton("Iya"){ _: DialogInterface, i: Int ->
                 finishAffinity()
             }
