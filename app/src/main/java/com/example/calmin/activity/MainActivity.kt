@@ -1,7 +1,8 @@
-package com.example.calmin
+package com.example.calmin.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.calmin.R
 
 class MainActivity : AppCompatActivity() {
 

@@ -23,6 +23,11 @@ class LoginActivity : AppCompatActivity() {
             togglePasswordVisibility()
         }
 
+        binding.btnAction.setOnClickListener {
+            startActivity(Intent(this, DashboardActivity::class.java))
+            finish()
+        }
+
         binding.btnRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }

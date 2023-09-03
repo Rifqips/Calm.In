@@ -5,4 +5,5 @@
     <color name="primary_color">#0F4E66</color>
     <color name="secondary_color">#61F4AD</color>
     <color name="grey_font">#F5F5F5</color>
+    <color name="grey">#8B97A8</color>
 </resources>

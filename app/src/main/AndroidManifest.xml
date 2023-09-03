@@ -13,14 +13,9 @@
         android:theme="@style/Base.Theme.CalmIn"
         tools:targetApi="31">
         <activity
-            android:name=".activity.RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.SplashActivity"
-            android:exported="true" >
+            android:name=".activity.DashboardActivity"
+            android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,8 +23,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:exported="true"/>
+            android:name=".activity.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SplashActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
