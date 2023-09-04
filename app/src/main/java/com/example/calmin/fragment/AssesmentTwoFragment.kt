@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.core.view.isGone
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.calmin.R
@@ -35,12 +36,13 @@ class AssesmentTwoFragment : Fragment() {
         story = arguments?.getString("story")!!
         storyTell = arguments?.getString("story-tell")!!
 
+
     }
 
     private fun assasmentChoosen(){
         binding.question1.setOnCheckedChangeListener { _, checkedId: Int ->
 
-            // Question 1
+            binding.tvNext.isGone = false
             if (binding.q1.isChecked) {
                 q1score = 1
             } else if (binding.q2.isChecked) {

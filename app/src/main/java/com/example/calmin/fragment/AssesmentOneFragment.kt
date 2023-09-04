@@ -1,10 +1,14 @@
 package com.example.calmin.fragment
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
+import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
 import com.example.calmin.R
 import com.example.calmin.databinding.FragmentAssesmentOneBinding
@@ -24,9 +28,14 @@ class AssesmentOneFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.etStory.doOnTextChanged{text, start, before, count ->
+            binding.tvNext.isGone = binding.etStory.text.toString().length <= 10
+        }
+
         binding.tvNext.setOnClickListener {
             postDescription()
         }
+
     }
 
     private fun postDescription(){

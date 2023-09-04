@@ -96,6 +96,7 @@
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/poppins"
         android:text="Lanjutkan"
+        android:visibility="gone"
         android:layout_marginBottom="40dp"
         android:textColor="@color/secondary_color"
         android:textSize="18sp"

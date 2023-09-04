@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isGone
 import androidx.navigation.fragment.findNavController
 import com.example.calmin.R
 import com.example.calmin.databinding.FragmentAssesmentThreeBinding
@@ -39,7 +40,7 @@ class AssesmentThreeFragment : Fragment() {
     private fun assasmentChoosen(){
         binding.question1.setOnCheckedChangeListener { _, checkedId: Int ->
 
-            // Question 1
+            binding.tvNext.isGone = false
             if (binding.q1.isChecked) {
                 q2Score = 1
             } else if (binding.q2.isChecked) {

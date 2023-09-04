@@ -2,4 +2,17 @@
     <string name="app_name">CalmIn</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="post_q1">Apakah hari ini anda sulit mengalami kesulitan ?</string>
+    <string name="post_q2">Apakah hari ini anda merasa tidak bahagia ?</string>
+    <string name="post_q3">Apakah hari ini anda merasa sulit mengambil keputusan ?</string>
+    <string name="post_q4">Apakah hari ini anda melakukan hal-hal penting ?</string>
+    <string name="post_q5">Apakah hari ini anda menikmati kegiatan yang dilakukan ?</string>
+    <string name="post_q6">Apakah hari ini anda tendang dan damai ?</string>
+
+    <string name="bad">Sangat kurang dari biasanya</string>
+    <string name="okay">Kurang dari biasanya</string>
+    <string name="good">sama saja seperti biasanya</string>
+    <string name="great">iya, lebih dari biasanya</string>
+
 </resources>
