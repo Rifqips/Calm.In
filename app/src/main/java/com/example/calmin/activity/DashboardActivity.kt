@@ -25,20 +25,16 @@ class DashboardActivity : AppCompatActivity() {
         binding.bottomNav.background = null
         loadFragment(fragmentHome)
 
-        binding.ivAssasment.setOnClickListener {
+        binding.fab.setOnClickListener {
             startActivity(Intent(this, AssasmentActivity::class.java))
         }
 
         binding.bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.menuHome ->{
+                R.id.menuHome ->
                     loadFragment(fragmentHome)
-                    true
-                }
-                R.id.menuProfile ->{
+                R.id.menuProfile ->
                     loadFragment(fragmentProfile)
-                    false
-                }
             }
             true
         }

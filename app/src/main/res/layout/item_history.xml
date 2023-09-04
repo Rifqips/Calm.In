@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
+    android:id="@+id/cv_item"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="5dp"
     app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="@color/black"
     android:layout_height="144dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,7 +36,7 @@
             android:text="2023-03-01"
             android:fontFamily="@font/poppins"
             android:textColor="@color/grey"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"/>
 
@@ -41,10 +45,11 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
+            android:layout_marginVertical="5dp"
+            android:textStyle="normal"
             android:text="I don't think that's allowed, because the catfish will  be eaten by humans"
-            android:textColor="@color/grey"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="@color/grey_rounded"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_date" />
 

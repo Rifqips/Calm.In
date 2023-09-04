@@ -7,11 +7,9 @@ import androidx.room.RoomDatabase
 import com.example.calmin.data.model.HistoryDataItem
 
 @Database(entities = [HistoryDataItem::class], version = 1 )
-
 abstract class HistoryDatabase : RoomDatabase(){
     abstract fun historyDao(): HistoryDao
     companion object{
-
         private var INSTANCE : HistoryDatabase? = null
         fun getInstance(context: Context):HistoryDatabase? {
             if (INSTANCE == null){
@@ -22,7 +20,6 @@ abstract class HistoryDatabase : RoomDatabase(){
             }
             return INSTANCE
         }
-
         fun destroyInstance(){
             INSTANCE = null
         }

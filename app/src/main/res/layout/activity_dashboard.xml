@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,29 +14,43 @@
         android:layout_height="match_parent" />
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        app:itemIconTint="@color/bottom_navigation_selector"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:background="@color/white"
-        app:itemTextColor="@color/primary_color"
-        app:itemTextAppearanceActive="@color/primary_color"
-        app:itemTextAppearanceInactive="@color/grey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav" />
-
-    <ImageView
-        android:id="@+id/iv_assasment"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_add"
-        android:translationZ="30dp"
-        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bottomNav" />
+        tools:ignore="BottomAppBar">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNav"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/white"
+            app:itemIconTint="@color/bottom_navigation_selector"
+            app:itemTextAppearanceActive="@color/primary_color"
+            app:itemTextAppearanceInactive="@color/grey"
+            app:itemTextColor="@color/primary_color"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav" />
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_add"
+        android:tintMode="@color/white"
+        app:layout_anchor="@id/bottomAppBar"
+        app:maxImageSize="50dp"
+        tools:ignore="ContentDescription" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
