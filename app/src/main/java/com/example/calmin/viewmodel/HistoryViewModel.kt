@@ -2,6 +2,7 @@ package com.example.calmin.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.calmin.data.model.HistoryDataItem
 import com.example.calmin.data.room.HistoryDatabase
@@ -28,6 +29,5 @@ class HistoryViewModel(app: Application) : AndroidViewModel(app)  {
             allHistory.postValue(listHistory)
         }
     }
-
 
 }
