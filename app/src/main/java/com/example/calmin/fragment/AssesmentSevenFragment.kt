@@ -2,6 +2,7 @@ package com.example.calmin.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,20 +11,29 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.calmin.R
 import com.example.calmin.activity.DashboardActivity
+import com.example.calmin.data.model.HistoryDataItem
+import com.example.calmin.data.room.HistoryDatabase
 import com.example.calmin.databinding.FragmentAssesmentSevenBinding
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
+private const val TAG ="AssesmentSevenFragment"
 class AssesmentSevenFragment : Fragment() {
 
     private lateinit var binding : FragmentAssesmentSevenBinding
+    private var dbHistory : HistoryDatabase? = null
 
-    var q1Score : Int = 0
-    var q2Score : Int = 0
-    var q3Score : Int = 0
-    var q4Score : Int = 0
-    var q5Score : Int = 0
-    var q6Score : Int = 0
-    var story : String = ""
-    var storyTell : String = ""
+    private var q1Score : Int = 0
+    private var q2Score : Int = 0
+    private var q3Score : Int = 0
+    private var q4Score : Int = 0
+    private var q5Score : Int = 0
+    private var q6Score : Int = 0
+    private var story : String = ""
+    private var storyTell : String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +46,7 @@ class AssesmentSevenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        dbHistory = HistoryDatabase.getInstance(requireActivity())
         assasmentChoosen()
         q1Score = arguments?.getInt("q1")!!
         q2Score = arguments?.getInt("q2")!!
@@ -62,9 +72,30 @@ class AssesmentSevenFragment : Fragment() {
         }
 
         binding.tvNext.setOnClickListener {
-            val total  = ((q1Score.toFloat() + q2Score.toFloat() + q3Score.toFloat() + q4Score.toFloat() + q5Score.toFloat() + q6Score.toFloat()) / 6)
-            Toast.makeText(context, "$story $storyTell", Toast.LENGTH_SHORT).show()
+            addHistory()
+            Toast.makeText(context, "Berhasil menambahkan riwayat", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun addHistory(){
+        GlobalScope.async {
+
+            val total  = ((q1Score.toFloat() + q2Score.toFloat() + q3Score.toFloat() + q4Score.toFloat() + q5Score.toFloat() + q6Score.toFloat()) / 6)
+            val currentDate = getCurrentDate("EEEE, dd MM yyyy")
+
+            val title = story
+            val content = storyTell
+            val dateTime = currentDate
+            val score = total
+            dbHistory!!.historyDao().insertHistory(HistoryDataItem(0, title, content,dateTime, score.toString()))
+            Log.d(TAG, dbHistory.toString())
+            startActivity(Intent(context, DashboardActivity::class.java))
+        }
+    }
+    private fun getCurrentDate(format: String): String {
+        val dateFormat = SimpleDateFormat(format, Locale.getDefault())
+        val currentDate = Date()
+        return dateFormat.format(currentDate)
     }
 
 }
