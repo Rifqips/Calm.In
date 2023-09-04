@@ -1,5 +1,6 @@
 package com.example.calmin.fragment
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -29,6 +30,7 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("CommitPrefEdits")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -39,14 +41,14 @@ class ProfileFragment : Fragment() {
 
         binding.btnLogout.setOnClickListener {
             AlertDialog.Builder(requireActivity())
-                .setTitle("Tutup Aplikasi")
-                .setMessage("Ingin Keluar Dari Aplikasi ??")
+                .setTitle("Ingin Keluar Dari Aplikasi ?")
+                .setMessage("Username atau password anda akan terhapus")
                 .setPositiveButton("Iya"){ _: DialogInterface, i: Int ->
                     startActivity(Intent(context, LoginActivity::class.java))
-//                    sharedPreferences = requireActivity()
-//                        .getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-//                    val addUser = sharedPreferences.edit()
-//                    addUser.clear()
+                    sharedPreferences = requireActivity()
+                        .getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                    val addUser = sharedPreferences.edit()
+                    addUser.clear().apply()
                 }
                 .setNegativeButton("Tidak"){ dialogInterface: DialogInterface, i: Int ->
                     dialogInterface.dismiss()
