@@ -81,14 +81,13 @@ class AssesmentSevenFragment : Fragment() {
     private fun addHistory(){
         GlobalScope.async {
 
-            val total  = ((q1Score.toFloat() + q2Score.toFloat() + q3Score.toFloat() + q4Score.toFloat() + q5Score.toFloat() + q6Score.toFloat()) / 6)
+            val total  = ((q1Score.toDouble() + q2Score.toDouble() + q3Score.toDouble() + q4Score.toDouble() + q5Score.toDouble() + q6Score.toDouble()) / 6)
             val currentDate = getCurrentDate("EEEE, dd MM yyyy")
 
             val title = story
             val content = storyTell
             val dateTime = currentDate
-            val score = total
-            dbHistory!!.historyDao().insertHistory(HistoryDataItem(0, title, content,dateTime, score.toString()))
+            dbHistory!!.historyDao().insertHistory(HistoryDataItem(0, title, content,dateTime, total.toString()))
             Log.d(TAG, dbHistory.toString())
             startActivity(Intent(context, DashboardActivity::class.java))
         }

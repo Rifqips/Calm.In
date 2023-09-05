@@ -1,24 +1,23 @@
 package com.example.calmin.activity.adapter
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.view.isGone
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.example.calmin.R
 import com.example.calmin.activity.DashboardActivity
 import com.example.calmin.data.model.HistoryDataItem
-import com.example.calmin.data.room.HistoryDao
 import com.example.calmin.data.room.HistoryDatabase
+import com.example.calmin.data.utils.Constants
 import com.example.calmin.databinding.ItemHistoryBinding
-import com.example.calmin.fragment.HomeFragment
 import com.example.calmin.viewmodel.HistoryViewModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
-import java.lang.reflect.Array
 
 class HistoryAdapter(var listHistory : List<HistoryDataItem>): RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
@@ -55,6 +54,25 @@ class HistoryAdapter(var listHistory : List<HistoryDataItem>): RecyclerView.Adap
                 it.context.startActivity(Intent(it.context, DashboardActivity::class.java))
             }
         }
+
+        holder.binding.tvDetail.setOnClickListener {
+            holder.binding.llOption.isGone = true
+            val dialog = Constants.dialogHistory(it.context, listHistory[position].score,"", Gravity.CENTER)
+            val ivBack = dialog.findViewById<ImageView>(R.id.iv_close)
+            val description = dialog.findViewById<TextView>(R.id.tv_description)
+            if (listHistory[position].score.toDouble() == 1.0){
+                description.text = "Pertahankan tetapi jangan terlalu santai ingat masa depan tidak semudah itu kak :)"
+            } else if (listHistory[position].score.toDouble() <= 2.0){
+                description.text = "Pertahankan terus kondisi ini, ikan sepat ikan curut bisa yuk!"
+            } else if (listHistory[position].score.toDouble() <= 3.0){
+                description.text = "Kalo capek istirahat sebentar ya kak, habis itu lanjut lagi :)"
+            } else if (listHistory[position].score.toDouble() <= 4.0){
+                description.text = "Kamu butuh refreshing dan lupakan sejenak aktifitas mu dan jangan galau :)"
+            }
+            ivBack.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show() }
     }
 
     override fun getItemCount(): Int {

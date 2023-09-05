@@ -8,11 +8,16 @@
     <string name="post_q3">Apakah hari ini anda merasa sulit mengambil keputusan ?</string>
     <string name="post_q4">Apakah hari ini anda melakukan hal-hal penting ?</string>
     <string name="post_q5">Apakah hari ini anda menikmati kegiatan yang dilakukan ?</string>
-    <string name="post_q6">Apakah hari ini anda tendang dan damai ?</string>
+    <string name="post_q6">Apakah hari ini anda tenang dan damai ?</string>
 
     <string name="bad">Sangat kurang dari biasanya</string>
     <string name="okay">Kurang dari biasanya</string>
     <string name="good">sama saja seperti biasanya</string>
     <string name="great">iya, lebih dari biasanya</string>
+
+    <string name="descript_one">Description One</string>
+    <string name="descript_two">Description Two</string>
+    <string name="descript_three">Description Three</string>
+    <string name="descript_four">Description Four</string>
 
 </resources>
