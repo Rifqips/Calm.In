@@ -67,7 +67,7 @@ class HistoryAdapter(var listHistory : List<HistoryDataItem>): RecyclerView.Adap
             } else if (listHistory[position].score.toDouble() <= 3.0){
                 description.text = "Kalo capek istirahat sebentar ya kak, habis itu lanjut lagi :)"
             } else if (listHistory[position].score.toDouble() <= 4.0){
-                description.text = "Kamu butuh refreshing dan lupakan sejenak aktifitas mu dan jangan galau :)"
+                description.text = "Kamu butuh refreshing lupakan sejenak aktifitas mu dan cukupkan galau mu itu :)"
             }
             ivBack.setOnClickListener {
                 dialog.dismiss()
