@@ -60,9 +60,34 @@
         android:id="@+id/rv_history"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:visibility="gone"
         android:layout_marginVertical="20dp"
-        android:paddingBottom="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_tittle_history" />
+
+    <RelativeLayout
+        android:id="@+id/invisible_history"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:background="@drawable/border_grey_menu"
+        android:padding="15dp"
+        android:layout_marginBottom="80dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tittle_history">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:text="Belum Ada Riwayat"
+            android:textColor="@color/grey"
+            android:textSize="14sp" />
+
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,7 +29,7 @@ class AssesmentOneFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.etStory.doOnTextChanged{text, start, before, count ->
-            binding.tvNext.isGone = binding.etStory.text.toString().length <= 10
+            binding.tvNext.isGone = binding.etStory.text.toString().isEmpty() && binding.etStoryTell.text.toString().isEmpty()
         }
 
         binding.tvNext.setOnClickListener {

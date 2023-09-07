@@ -9,6 +9,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isEmpty
+import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,10 +49,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         adapterHistory = HistoryAdapter(emptyList())
-        sharedPreferences = requireActivity()
-            .getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         binding.tvUsername.text = sharedPreferences.getString("username","")
         historyDB = HistoryDatabase.getInstance(requireContext())
         historyAdapter()
@@ -57,25 +58,24 @@ class HomeFragment : Fragment() {
     }
 
     private fun vmHistory(){
-        viewModel = ViewModelProvider(this).get(HistoryViewModel::class.java)
-        viewModel.getAllHistoryObserve().observe(requireActivity(),{
-            adapterHistory.setHistoryData(it as List<HistoryDataItem>)
-        })
+        viewModel = ViewModelProvider(this)[HistoryViewModel::class.java]
+        viewModel.getAllHistoryObserve().observe(requireActivity()) { adapterHistory.setHistoryData(it as List<HistoryDataItem>) }
     }
 
     private fun historyAdapter(){
-        onAttach(requireActivity())
         binding.rvHistory.adapter = adapterHistory
-        binding.rvHistory.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+        binding.rvHistory.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
         binding.rvHistory.isNestedScrollingEnabled = false
         GlobalScope.launch {
             val listHistory = historyDB?.historyDao()?.getDataHistory()
-            requireActivity().runOnUiThread {
-                listHistory.let {
+            requireActivity().runOnUiThread { listHistory.let {
                     adapterHistory.setHistoryData(it!!)
+                    binding.rvHistory.isGone = false
+                    binding.invisibleHistory.isGone = true
                 }
+
             }
         }
-    }
 
+    }
 }

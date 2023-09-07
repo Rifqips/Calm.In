@@ -25,7 +25,7 @@ class HistoryAdapter(var listHistory : List<HistoryDataItem>): RecyclerView.Adap
     lateinit var viewModel: HistoryViewModel
 
     class ViewHolder(var binding: ItemHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
-//        private lateinit var listener : On
+
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryAdapter.ViewHolder {
         val view = ItemHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
